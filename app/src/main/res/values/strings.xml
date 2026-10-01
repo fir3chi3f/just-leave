@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Flip Flash</string>
+    <string name="armed_hint">Flip open</string>
+    <string name="held_hint">Release to close</string>
+</resources>

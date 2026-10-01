@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.FlipFlash" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">always</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+</resources>
