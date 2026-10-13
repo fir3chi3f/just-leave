@@ -2,7 +2,7 @@
 
 An Android 16+ app for the Motorola Razr: launch it from the small cover screen, flip the
 phone open, and a CMY light show plays. It cycles through icons and colors on the
-cyan → magenta → yellow wheel. Press and hold to freeze the frame. Let go to close.
+cyan → magenta → yellow wheel. Press and hold to show a checkmark. Let go to close.
 
 ## How it works
 
@@ -10,7 +10,7 @@ cyan → magenta → yellow wheel. Press and hold to freeze the frame. Let go to
 |-----------|-------------------------------------------------|----------------------------------------|
 | `ARMED`   | Cover screen: a breathing CMY disc, "Flip open" | Flip the phone open (or tap to preview) |
 | `PLAYING` | Full-screen show on the main display             | Put your thumb down                    |
-| `HELD`    | The frame freezes, "Release to close"           | Lift your thumb                        |
+| `HELD`    | Black pixel checkmark on highlighter green      | Lift your thumb                        |
 | `CLOSED`  | The app finishes and leaves Recents             | n/a                                    |
 
 **Flip-open detection** (`FlipShowActivity`) uses two signals and acts on whichever comes first:

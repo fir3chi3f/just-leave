@@ -30,6 +30,10 @@ class FlipShowView(
         color = Color.WHITE
     }
     private val path = Path()
+    private val pixel = Paint().apply {
+        style = Paint.Style.FILL
+        color = Color.BLACK
+    }
 
     init {
         isClickable = true
@@ -50,13 +54,9 @@ class FlipShowView(
 
         when (controller.state) {
             ShowController.State.ARMED -> drawArmed(canvas, now, w, h, base)
-            ShowController.State.PLAYING, ShowController.State.HELD -> {
+            ShowController.State.PLAYING ->
                 drawFrame(canvas, ShowScript.frameAt(controller.elapsedMs(now)), w, h, base)
-                if (controller.state == ShowController.State.HELD) {
-                    text.alpha = 200
-                    canvas.drawText(context.getString(R.string.held_hint), w / 2f, h - base * 0.08f, text)
-                }
-            }
+            ShowController.State.HELD -> drawCheckmark(canvas, w, h, base)
             ShowController.State.CLOSED -> canvas.drawColor(Color.BLACK)
         }
 
@@ -77,6 +77,25 @@ class FlipShowView(
         fill.alpha = 255
         text.alpha = 220
         canvas.drawText(context.getString(R.string.armed_hint), w / 2f, h / 2f + base * 0.34f, text)
+    }
+
+    /** Held: a chunky black pixel-art checkmark on highlighter yellow-green. */
+    private fun drawCheckmark(canvas: Canvas, w: Float, h: Float, base: Float) {
+        canvas.drawColor(HIGHLIGHTER)
+        val cols = CHECKMARK[0].length
+        val rows = CHECKMARK.size
+        // Whole-pixel cells keep the edges crisp.
+        val cell = (base * 0.6f / cols).toInt().coerceAtLeast(1).toFloat()
+        val left = ((w - cols * cell) / 2f).toInt().toFloat()
+        val top = ((h - rows * cell) / 2f).toInt().toFloat()
+        for ((row, line) in CHECKMARK.withIndex()) {
+            for ((col, c) in line.withIndex()) {
+                if (c != '#') continue
+                val x = left + col * cell
+                val y = top + row * cell
+                canvas.drawRect(x, y, x + cell, y + cell, pixel)
+            }
+        }
     }
 
     private fun drawFrame(canvas: Canvas, frame: Frame, w: Float, h: Float, base: Float) {
@@ -159,4 +178,22 @@ class FlipShowView(
     }
 
     override fun performClick(): Boolean = super.performClick()
+
+    private companion object {
+        /** Highlighter yellow-green. */
+        val HIGHLIGHTER = Color.rgb(0xCC, 0xFF, 0x00)
+
+        /** Pixel-art checkmark; '#' is a black pixel. */
+        val CHECKMARK = listOf(
+            "..........##",
+            ".........###",
+            "........###.",
+            ".......###..",
+            "##....###...",
+            "###..###....",
+            ".######.....",
+            "..####......",
+            "...##.......",
+        )
+    }
 }
