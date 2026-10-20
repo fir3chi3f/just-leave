@@ -40,12 +40,31 @@ If the app is launched while the phone is already open, the control panel appear
 
 ## Build & install
 
-You need Android Studio (or the Android SDK with platform 36) and JDK 17+.
+You need Android Studio (or the Android SDK with platform 36) and JDK 25.
 
 ```sh
 ./gradlew :app:testDebugUnitTest     # unit tests
 ./gradlew :app:installDebug          # install on a phone with USB debugging enabled
+./gradlew :app:assembleRelease       # signed release APK (needs the signing properties below)
 ```
+
+### Release signing
+
+Release builds are signed when these Gradle properties are set, usually in
+`~/.gradle/gradle.properties` (never in the repo). Without them, `assembleRelease` makes an
+unsigned APK that won't install.
+
+```properties
+justLeaveStoreFile=/path/to/just-leave-release.jks
+justLeaveStorePassword=...
+justLeaveKeyAlias=just-leave
+justLeaveKeyPassword=...
+```
+
+Publishing a GitHub release runs `.github/workflows/build.yml`, which builds a signed APK and
+attaches it to the release. It reads the keystore and password from the repository secrets
+`JUST_LEAVE_KEYSTORE_BASE64` (the `.jks` file, base64-encoded) and
+`JUST_LEAVE_KEYSTORE_PASSWORD`.
 
 ## Razr setup
 

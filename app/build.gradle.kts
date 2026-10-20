@@ -15,10 +15,25 @@ android {
         versionName = "0.1.0"
     }
 
+    // Release signing reads Gradle properties: ~/.gradle/gradle.properties on your machine, or
+    // ORG_GRADLE_PROJECT_* environment variables in CI. Without them, release builds are unsigned.
+    val releaseStoreFile = providers.gradleProperty("justLeaveStoreFile").orNull
+    signingConfigs {
+        if (releaseStoreFile != null) {
+            create("release") {
+                storeFile = file(releaseStoreFile)
+                storePassword = providers.gradleProperty("justLeaveStorePassword").get()
+                keyAlias = providers.gradleProperty("justLeaveKeyAlias").get()
+                keyPassword = providers.gradleProperty("justLeaveKeyPassword").get()
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+            signingConfig = signingConfigs.findByName("release")
         }
     }
 
