@@ -23,7 +23,7 @@ jobs:
       - name: Test and build debug APK
         run: ./gradlew testDebugUnitTest assembleDebug
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: just-leave-debug-apk
           path: app/build/outputs/apk/debug/*.apk
