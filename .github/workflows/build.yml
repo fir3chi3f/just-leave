@@ -1,14 +1,16 @@
 name: Build
 
-# Merging a pull request into main pushes to main, so this runs on every merge.
+# Runs when a GitHub release is published, and attaches the APK to that release.
 on:
-  push:
-    branches: [main]
+  release:
+    types: [published]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # to attach the APK to the release
     steps:
       - uses: actions/checkout@v7
 
@@ -23,7 +25,17 @@ jobs:
       - name: Test and build debug APK
         run: ./gradlew testDebugUnitTest assembleDebug
 
+      # The release build type has no signing set up yet, so the debug APK is the installable one.
+      - name: Name the APK after the release
+        run: cp app/build/outputs/apk/debug/app-debug.apk "just-leave-${{ github.event.release.tag_name || github.sha }}.apk"
+
       - uses: actions/upload-artifact@v7
         with:
           name: just-leave-debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          path: just-leave-*.apk
+
+      - name: Attach the APK to the release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ github.event.release.tag_name }}" just-leave-*.apk
