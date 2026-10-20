@@ -1,11 +1,9 @@
-# Flip Flash
+# Just Leave
+## You can do it runneh
 
 An Android 16+ app for the Motorola Razr: launch it from the small cover screen, flip the
 phone open, and the bottom half of the screen becomes a control panel. Press and hold the big
 asterisk button to show a checkmark in the top half. Let go to close.
-
-The CMY light show that used to play up top now lives in its own app,
-[cmy-light-show](https://github.com/jbanahan/cmy-light-show).
 
 The control panel has the asterisk button (right of centre, under your right thumb), three
 smaller buttons arcing around its left side, and an on/off toggle in the upper left that
