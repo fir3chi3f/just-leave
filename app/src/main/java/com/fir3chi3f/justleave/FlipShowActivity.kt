@@ -1,4 +1,4 @@
-package com.potentiallamp.flipflash
+package com.fir3chi3f.justleave
 
 import android.content.res.Configuration
 import android.os.Bundle

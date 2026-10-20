@@ -1,4 +1,4 @@
-package com.potentiallamp.flipflash
+package com.fir3chi3f.justleave
 
 /**
  * Lifecycle of one show. Pure Kotlin (no Android imports) so it can be unit tested on the JVM.

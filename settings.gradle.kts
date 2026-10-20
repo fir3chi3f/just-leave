@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "potential-lamp"
+rootProject.name = "just-leave"
 include(":app")

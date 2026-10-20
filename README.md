@@ -29,7 +29,7 @@ If the app is launched while the phone is already open, the control panel appear
 
 ## Code map
 
-- `app/src/main/java/com/potentiallamp/flipflash/`
+- `app/src/main/java/com/fir3chi3f/justleave/`
   - `ShowController.kt`: the armed → playing → held → closed state machine, plus a show
     clock that stops while you hold.
   - `FlipShowView.kt`: draws the cover screen, checkmark and control panel on a `Canvas`
@@ -50,9 +50,9 @@ You need Android Studio (or the Android SDK with platform 36) and JDK 17+.
 ## Razr setup
 
 1. **Let the app run on the cover screen:** Settings → *External display* → *Apps on
-   external display*, then turn on **Flip Flash**. (Motorola renames this menu between
+   external display*, then turn on **Just Leave**. (Motorola renames this menu between
    releases. Search Settings for "external display" if you can't find it.)
-2. **Keep it going when you open the phone:** in the same area, set Flip Flash to
+2. **Keep it going when you open the phone:** in the same area, set Just Leave to
    *continue on the main display when opened*. If this is off, opening the phone sends the
-   app to the background and you'll land on the home screen instead of Flip Flash.
-3. On the cover screen, open Flip Flash. You'll see the app icon. Flip it!
+   app to the background and you'll land on the home screen instead of Just Leave.
+3. On the cover screen, open Just Leave. You'll see the app icon. Flip it!

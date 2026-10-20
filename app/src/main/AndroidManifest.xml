@@ -5,7 +5,7 @@
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.FlipFlash">
+        android:theme="@style/Theme.JustLeave">
 
         <!--
             configChanges lets the activity survive the hop from the cover screen to the

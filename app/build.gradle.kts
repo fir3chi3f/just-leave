@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.potentiallamp.flipflash"
+    namespace = "com.fir3chi3f.justleave"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.potentiallamp.flipflash"
+        applicationId = "com.fir3chi3f.justleave"
         // Android 16+ only.
         minSdk = 36
         targetSdk = 36
