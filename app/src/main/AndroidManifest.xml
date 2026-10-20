@@ -12,6 +12,7 @@
             main screen without being recreated, so the flip-open moment is seamless.
             (If the system recreates it anyway, the new instance sees the open hinge and
             starts playing immediately.)
+            screenOrientation keeps the split top/bottom layout upright: no rotating while open.
         -->
         <activity
             android:name=".FlipShowActivity"
@@ -19,7 +20,8 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask"
-            android:resizeableActivity="true">
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -16,7 +16,8 @@ import kotlinx.coroutines.launch
 
 /**
  * Launch this from the Razr's cover screen. It waits ("armed") until the phone is flipped open,
- * then plays [ShowScript]. Press to show a checkmark; release to close.
+ * then shows the control panel. Press the asterisk button to show a checkmark; release it to
+ * close.
  *
  * Flip-open is detected two ways, whichever fires first:
  *  1. Jetpack WindowManager reports a hinge ([FoldingFeature]) — only the main screen has one.
