@@ -1,5 +1,5 @@
 # Just Leave
-## You can do it runneh
+## You can do it runnah
 
 An Android 16+ app for the Motorola Razr: launch it from the small cover screen, flip the
 phone open, and the bottom half of the screen becomes a control panel. Press and hold the big
